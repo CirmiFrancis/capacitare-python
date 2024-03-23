@@ -1,4 +1,4 @@
-# Para correr el codigo: 'python3 script.py'
+# Para correr el codigo: 'python3 clase1.py'
 
 # ======================================== CÓDIGO 1 ========================================
 
