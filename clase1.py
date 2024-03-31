@@ -10,7 +10,7 @@
 
 # edad = int(input('Ingrese su edad: '))
 
-# #Casteo explicíto: le decimmos que tome a la variable 'edad' como un string
+# #Casteo explicíto: le decimos que tome a la variable 'edad' como un string
 # print('Tu edad es: ' + str(edad))
 # print('Tu edad es:', edad)
 
