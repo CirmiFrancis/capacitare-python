@@ -267,7 +267,7 @@ print(listaOrdenadaPorEdad)
 # Hacer un ciclo que agregue a una lista los numeros del 1 al 10.
 # Hacer una sumatoria de todos los numeros.
 # Dividir la lista en dos listas: numeros pares e impares.
-# Crear una funcion a la cual le agregues 5 strings y te devuelva una lista de strings y el número de elemento con el string más largo.
+# Crear una funcion a la cual le agregues X parámetros del tipo string y los agregue a una lista. Además, utilizar otra función para devolver: el string más largo y la cantidad de caracteres de este último.
 
 print('================================================')
 
