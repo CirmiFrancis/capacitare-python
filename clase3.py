@@ -1,11 +1,6 @@
 # Clase 3
 
-# Clave Wi Fi - abejitas1371
-# Clave Notebook - c4p4202E
-# URL - https://codeshare.io/wnkzPJ
-
 # Repaso Clase 2
-
 '''
  replace(), reemplaza una cadena de strings por otra
  find(), para encontrar un parámetro
@@ -17,7 +12,6 @@
  split(), divide una cadena
  join(), une cadenas
  count(), devuelve el nro de veces que aparece una subcadena
-
 '''
 
 # Ejercicio 1
