@@ -1,6 +1,8 @@
 # Piedra - Papel - Tijera
 import random
 
+bool = True
+listaJugadas = ['Piedra', 'Papel', 'Tijera'] 
 resultado = ''
 victoriasUsuario = 0
 victoriasIA = 0
@@ -9,9 +11,6 @@ while True:
     print('===================================')
     print('¿Piedra - Papel - Tijera? (Fin para salir)')
     print('')
-
-    bool = True
-    listaJugadas = ['Piedra', 'Papel', 'Tijera'] 
 
     # Jugada Usuario
     while True:
