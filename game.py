@@ -8,6 +8,7 @@ victoriasUsuario = 0
 victoriasIA = 0
 
 while True:
+    # Iniciar Juego
     print('===================================')
     print('¿Piedra - Papel - Tijera? (Fin para salir)')
     print('')
@@ -34,6 +35,7 @@ while True:
     # Jugada IA
     jugadaIA = random.choice(listaJugadas)
 
+    # Mostrar Jugadas
     print('')
     print('(Tú)', jugadaUsuario)
     print('(IA)', jugadaIA)
@@ -51,5 +53,6 @@ while True:
         resultado = 'Perdiste'
         victoriasIA += 1
 
+    # Mostrar Resultado
     resultado = f'Resultado: {resultado} ({victoriasUsuario} - {victoriasIA})'
     print(resultado)
