@@ -1,16 +1,5 @@
 # No fui, pero me guié con el código de 'Codeshare'.
 
-'''
-Clave WiFi - 
-abejitas1371 / 01030708521503
-
-Clave Notebook - 
-c4p4202E
-
-URL - 
-https://codeshare.io/wnkzPJ
-'''
-
 # Ejercicio 1
 ## Pedir al usuario que ingrese 3 nùmeros, luego imprimir cùal de ellos es el mayor
 
