@@ -78,7 +78,7 @@ def verificarPartida(simbolo):
         
 # ============================================== Juego
 while len(jugadasDisponibles) != 0:
-    if simboloJugador == 'O':
+    if simboloJugador == f'{red}O{reset}':
         print('=======================')
         print('')
 
