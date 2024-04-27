@@ -30,7 +30,9 @@ print('===============================')
 # Ejercicio 2
 ## Pedir al usuario que ingrese una palabra, invertir dicha palabra y comparar ambas para verificar si la palabra es palíndromo.
 
+'''
 print('===============================')
+
 palabraIngresada = input('Palabra ingresada: ')
 palabraInvertida = ''
 
@@ -45,10 +47,31 @@ else:
     print('La palabra NO ES palíndromo.')
 
 print('===============================')
+'''
 
 # Ejercicio 3
 ## Pedir al usuario que ingrese una cantidad de exámenes y la nota de cada examen, para calcular el promedio y, en caso de ser mayor a 6, aprobarlo.
 
-cantidadExamenes = int( input('Ingresar un número de exámenes: ') )
+print('===============================')
 
-# for i in range(len(cantidadExamenes))
+cantidadExamenes = int( input('Ingresar un número de exámenes: ') )
+acumuladorNota = 0
+
+for i in range(cantidadExamenes):
+    nota = float( input(f'Ingresa la nota {i+1}: ') )
+    acumuladorNota += nota
+
+promedio = acumuladorNota/cantidadExamenes
+
+print(f'El promedio es: {round(promedio, 2)}')
+
+if promedio > 6:
+    print('-Aprobado-')
+else:
+    print('-Desaprobado-')
+
+#Operador Ternario:
+#resultado = '-Aprobado-' if promedio > 6 else '-Desaprobado-'
+#print(resultado)
+ 
+print('===============================')
