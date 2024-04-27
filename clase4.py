@@ -1,4 +1,4 @@
-# No fui, pero me guié con el código de 'Codeshare'.
+# Me guié con el código de 'Codeshare'.
 
 # Ejercicio 1
 ## Pedir al usuario que ingrese 3 nùmeros, luego imprimir cùal de ellos es el mayor

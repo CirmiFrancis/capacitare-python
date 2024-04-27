@@ -1,4 +1,4 @@
-# No fui. Sin embargo, asumí los temas que pudieron haber visto en esta clase.
+# Asumí los temas que pudieron haber visto en esta clase.
 
 # ======================================== ========================================
 
