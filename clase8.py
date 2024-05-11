@@ -123,13 +123,13 @@ print("============================================")
 
 valorTotal=int(input("Ingrese VALOR TOTAL de la compra: $"))
 
-codigo10=0.9
-codigo20=0.8
-codigo50=0.5
+descuento10=0.9
+descuento20=0.8
+descuento50=0.5
 
 print("-\nEl precio sin descuento es: $",valorTotal)
-print("El precio con 10% de descuento es: $",valorTotal*codigo10)
-print("El precio con 20% de descuento es: $",valorTotal*codigo20)
-print("El precio con 50% de descuento es: $",valorTotal*codigo50)
+print("El precio con 10% de descuento es: $",valorTotal*descuento10)
+print("El precio con 20% de descuento es: $",valorTotal*descuento20)
+print("El precio con 50% de descuento es: $",valorTotal*descuento50)
 
 print("============================================")
