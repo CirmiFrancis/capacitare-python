@@ -1,3 +1,5 @@
+# Clase 1 - Variables & Print
+
 # Para correr el codigo: 'python3 clase1.py'
 
 # ======================================== CÓDIGO 1 ========================================

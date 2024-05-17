@@ -1,0 +1,9 @@
+# Clase 1 - Variables & Print
+# Clase 2 - Funciones para strings (upper(), lower(), capitalize(), strip(), etc)
+# Clase 3 - Repaso Funciones para strings & If-Elif-Else
+# Clase 4 - Repaso If-Elif-Else & Operador Lógico AND
+# Clase 5 - Repaso If-Elif-Else & Ciclos
+# Clase 6 - Repaso Ciclos
+# Clase 7 - Repaso General
+# Clase 8 - Repaso General 2 & Listas (Arrays)
+# Clase 9 - Repaso Listas (Arrays)

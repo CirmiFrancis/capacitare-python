@@ -1,3 +1,5 @@
+# Clase 4 - Repaso If-Elif-Else & Operador Lógico AND
+
 # Me guié con el código de 'Codeshare'.
 
 # Ejercicio 1

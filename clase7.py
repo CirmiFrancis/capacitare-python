@@ -1,3 +1,5 @@
+# Clase 7 - Repaso General
+
 # Ejercicio 1
 # Pedir al usuario una palabra y contar la cantidad de vocales. Imprimir la cantidad de cada vocal.
 
@@ -115,9 +117,9 @@ print('======================================================================')
 # Ejercicio 4
 # Desarrollar un programa que permita la gestión de la información de los empleados de una empresa.
 # Debe tener las siguientes funcionalidades:
-# - Ingresar empleados (nombre, salrio y horas trabajadas)
+# - Ingresar empleados (nombre, salario y horas trabajadas)
 # - Calcular salario semanal considerando un salario base por hora ($100) y adicional por horas extras ($50) si son más de 40 horas semanales
-# - Imprimir en pantalla el nombre salrio semanal y bono de cada empleado
+# - Imprimir en pantalla el nombre salario semanal y bono de cada empleado
 
 yellow = "\033[93m"
 reset = "\033[0m"

@@ -1,4 +1,4 @@
-# Clase 3
+# Clase 3 - Repaso Funciones para strings & If-Elif-Else
 
 # Repaso Clase 2
 '''

@@ -1,8 +1,6 @@
+# Clase 2 - Funciones para strings (upper(), lower(), capitalize(), strip(), etc)
+
 # Asumí los temas que pudieron haber visto en esta clase.
-
-# ======================================== ========================================
-
-# Para correr el codigo: 'python3 clase2.py'
 
 # ======================================== OPERADORES ========================================
 
