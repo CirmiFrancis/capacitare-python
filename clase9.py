@@ -29,6 +29,45 @@
 # reverse(): 
 # Invierte el orden de los elementos en la lista.
 
+# ========================================================================
+
+# 'Diccionario' no entra dentro del programa pero lo vimos por arriba. 
+# Es iterable y se debe de buscar el valor por su clave.
+# La estructura de un diccionario es:
+# diccionario = {
+#     "clave": "valor",
+#     "clave2": "valor2"
+# }
+
+#dic = {
+#    "nombre": "juan",
+#    "edad": 25
+#}
+#print(dic)
+
+#dic["alumno"] = "si, es alumno"
+
+#print(dic)
+#print(dic.keys()) # mostrar claves
+#print(dic.values()) # mostrar valores
+#print(dic.items()) # mostrar ambas
+
+#del dic["alumno"] # elimina una clave-valor
+
+# ¡¡¡¡¡¡¡¡¡¡ EJERCICIO EXTRA: Adaptar el 'Ejercicio 2' de la clase8.py usando diccionario !!!!!!!!!!
+# ¡¡¡¡¡¡¡¡¡¡ EJERCICIO EXTRA: Adaptar el 'Ejercicio 4' de la clase9.py usando diccionario !!!!!!!!!!
+
+#productos = { # diccionarios dentro de un diccionario
+#    "tv": {"precio": 80, "stock": 10},
+#    "pc": {"precio": 80, "stock": 5}
+#}
+
+#print(productos) # imprime el diccionario
+#print(productos["tv"]["precio"]) # busca la clave "tv" y dentro de este busca la clave "precio" para imprimir su valor
+
+#producto = productos["tv"] # obtiene la clave-valor correspondiente a "tv", de productos
+#print(producto["stock"]) # imprime el valor de la clave "stock" de la variable "producto"
+
 # ======================================================================================================================
 
 # Ejercicio 1: Cuponeras de Descuentos
@@ -139,7 +178,7 @@ print("=========================================================================
 # Una vez que se terminaron de ingresar los registros de nombres y notas imprimir cantidad de alumnos aprobados y desaprobados, también imprimir cual es el promedio de los aprobados y cual es el promedio general.
 # Será un plus en este ejercicio imprimir nombre y nota del alumno con la nota más alta.
 
-'''
+
 print("=================================================")
 
 yellow = "\033[93m"
@@ -197,7 +236,7 @@ print(f'-\n{yellow}* ALUMNO con el PROMEDIO MÁS ALTO: {alumnoPromedioMasAlto} \
     \n* PROMEDIO MÁS ALTO: {round(promedioMasAlto,2)}{reset}')
 
 print("=================================================")
-'''
+
 
 # Ejercicio 4: Sistema de Reservas de Cine
 
@@ -206,6 +245,7 @@ print("=================================================")
 # -> Si hay suficientes asientos, debe mostrar un mensaje confirmando la reserva. 
 # -> Si no hay suficientes asientos, debe mostrar un mensaje indicando que no hay suficientes asientos disponibles y ofrecer asientos para las películas que sí cuenten con esa cantidad de asientos disponibles.
 
+'''
 print("=================================================")
 
 yellow = "\033[93m"
@@ -264,3 +304,93 @@ while flag:
             flag = True
 
 print("=================================================")
+'''
+
+# EJERCICIO EXTRA: Adaptar el 'Ejercicio 2' de la clase8.py usando diccionario
+## Declarar un conjunto de productos (a elección, mínimo 3) con sus precios y stock
+## Pedir al usuario que ingrese el producto que quiere comprar y la cantidad
+## Verificar si hay stock
+## Imprimir a detalle si la compra se pudo realizar o no
+
+'''
+print("=================================================")
+
+yellow = "\033[93m"
+reset = "\033[0m"
+
+productosPreciosStock = {
+    "pan": {"precio": 50, "stock": 100},
+    "queso": {"precio": 100, "stock": 200},
+    "carne": {"precio": 150, "stock": 300},
+}
+
+print(f'{yellow}{productosPreciosStock}{reset}')
+
+pedidoProducto = input('Ingresa el PRODUCTO que quieres comprar: ').strip().lower()
+pedidoCantidad = int( input('Ingresa la CANTIDAD que quieres comprar: ') )
+
+if pedidoProducto in productosPreciosStock:
+    print('-\n*Producto encontrado*')
+    if productosPreciosStock[pedidoProducto]["stock"] >= pedidoCantidad:
+        print('*Hay stock*')
+        productosPreciosStock[pedidoProducto]["stock"] -= pedidoCantidad # actualizamos el stock
+        print(f'-\n{yellow}El pedido realizado fue: {pedidoProducto, pedidoCantidad}. La compra fue exitosa.{reset}')
+        print(f'{yellow}El stock del producto fue actualizado: {productosPreciosStock[pedidoProducto]}{reset}') # devolvemos el stock actualizado
+    else:
+        print('*Stock insuficiente*')
+else:
+    print('-\n*Producto NO encontrado*')
+print("=================================================")
+'''
+
+# EJERCICIO EXTRA: Adaptar el Ejercicio 4 'Sistema de Reservas de Cine' usando diccionario
+## Crear un sistema de reservas para un cine. El cine tiene una lista de 5 películas y X cantidad de asientos disponibles para cada película. 
+## El programa deberá permitir a los usuarios elegir una película e ingresar la cantidad de boletos que desean reservar, luego se deberá verificar si hay suficientes asientos disponibles para la reserva. 
+## -> Si hay suficientes asientos, debe mostrar un mensaje confirmando la reserva. 
+## -> Si no hay suficientes asientos, debe mostrar un mensaje indicando que no hay suficientes asientos disponibles y ofrecer asientos para las películas que sí cuenten con esa cantidad de asientos disponibles.
+
+'''
+print("=================================================")
+
+yellow = "\033[93m"
+reset = "\033[0m"
+
+cinePeliculas = {
+    "tu nombre": 50,
+    "busqueda implacable": 80,
+    "una voz silenciosa": 30,
+    "harry potter y la piedra filosofal": 100,
+    "toy story": 120,
+}
+
+print(f'{yellow}Películas disponibles:\n{cinePeliculas}{reset}')
+
+flag = True
+
+while flag:
+    peliculaElegida = input('-\nElige una PELÍCULA: ').strip().lower()
+    cantidadBoletos = int( input('Escribe la CANTIDAD de BOLETOS a reservar: ') )
+
+    if peliculaElegida in cinePeliculas:
+        print('-\n*Película encontrada*')
+        if cinePeliculas[peliculaElegida] >= cantidadBoletos:
+            print('*Asientos suficientes*')
+            cinePeliculas[peliculaElegida] -= cantidadBoletos # actualizamos la cantidad de asientos
+            print(f'-\n{yellow}El pedido realizado fue: {peliculaElegida, cantidadBoletos}. La compra fue exitosa.{reset}')
+            print(f'{yellow}La cantidad de asientos fue actualizada: {cinePeliculas[peliculaElegida]}{reset}') # devolvemos la cantidad de asientos actualizada
+            flag = False
+        else:
+            print('*Asientos insuficientes*')
+    else:
+        print(f'-\n{yellow}*Película NO encontrada*{reset}') 
+        flag = False
+
+    if flag:
+        respuesta = input('-\n¿Quieres ver otra película? ¿SI o NO? ').strip().lower()
+        if respuesta == 'no':
+            flag = False
+        else:
+            flag = True
+
+print("=================================================")
+'''
