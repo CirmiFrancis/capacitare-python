@@ -1,4 +1,4 @@
-# Clase 9 - Repaso Listas (Arrays)
+# Clase 9 - Repaso Listas (Arrays) & Diccionario
 
 # ALGUNAS FUNCIONES:
 
