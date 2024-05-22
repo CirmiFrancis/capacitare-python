@@ -178,7 +178,7 @@ print("=========================================================================
 # Una vez que se terminaron de ingresar los registros de nombres y notas imprimir cantidad de alumnos aprobados y desaprobados, también imprimir cual es el promedio de los aprobados y cual es el promedio general.
 # Será un plus en este ejercicio imprimir nombre y nota del alumno con la nota más alta.
 
-
+'''
 print("=================================================")
 
 yellow = "\033[93m"
@@ -236,7 +236,7 @@ print(f'-\n{yellow}* ALUMNO con el PROMEDIO MÁS ALTO: {alumnoPromedioMasAlto} \
     \n* PROMEDIO MÁS ALTO: {round(promedioMasAlto,2)}{reset}')
 
 print("=================================================")
-
+'''
 
 # Ejercicio 4: Sistema de Reservas de Cine
 
@@ -300,8 +300,6 @@ while flag:
         respuesta = input('-\n¿Quieres ver otra película? ¿SI o NO? ').strip().lower()
         if respuesta == 'no':
             flag = False
-        else:
-            flag = True
 
 print("=================================================")
 '''
@@ -349,7 +347,7 @@ print("=================================================")
 ## -> Si hay suficientes asientos, debe mostrar un mensaje confirmando la reserva. 
 ## -> Si no hay suficientes asientos, debe mostrar un mensaje indicando que no hay suficientes asientos disponibles y ofrecer asientos para las películas que sí cuenten con esa cantidad de asientos disponibles.
 
-'''
+
 print("=================================================")
 
 yellow = "\033[93m"
@@ -389,8 +387,5 @@ while flag:
         respuesta = input('-\n¿Quieres ver otra película? ¿SI o NO? ').strip().lower()
         if respuesta == 'no':
             flag = False
-        else:
-            flag = True
 
 print("=================================================")
-'''
