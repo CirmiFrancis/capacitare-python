@@ -1,16 +1,24 @@
 # Piedra - Papel - Tijera
 import random
 
-bool = True
+# Colores
+red = "\033[91m"
+yellow = "\033[93m"
+blue = "\033[94m"
+reset = "\033[0m"
+
+# Variables
+booleano = True
 listaJugadas = ['Piedra', 'Papel', 'Tijera'] 
 resultado = ''
 victoriasUsuario = 0
 victoriasIA = 0
 
+# Iniciar Ejecución
 while True:
     # Iniciar Juego
     print('===================================')
-    print('¿Piedra - Papel - Tijera? (Fin para salir)')
+    print(f'{yellow}¿Piedra - Papel - Tijera?{reset} (Fin para salir)')
     print('')
 
     # Jugada Usuario
@@ -19,16 +27,15 @@ while True:
         jugadaUsuario = jugadaUsuario.strip().capitalize()
 
         if jugadaUsuario == 'Fin': 
-            bool = False
+            booleano = False
             break
         elif (jugadaUsuario not in listaJugadas):
-            print('Jugada no válida. Por favor, vuelve a escribir tu jugada.')
-            print('===================================')
+            print(f'{red}Jugada no válida. Por favor, vuelve a escribir tu jugada.{reset}')
         else:
             break
 
     # Finalizar Ejecución
-    if not bool: 
+    if not booleano: 
         print('===================================')
         break
 
@@ -36,23 +43,21 @@ while True:
     jugadaIA = random.choice(listaJugadas)
 
     # Mostrar Jugadas
-    print('')
-    print('(Tú)', jugadaUsuario)
-    print('(IA)', jugadaIA)
-    print('')
+    print(f'\n{blue}(TÚ) {jugadaUsuario}{reset}')
+    print(f'{red}(IA) {jugadaIA}{reset}\n')
         
     # Comparar Jugadas
     if jugadaUsuario == jugadaIA:
-        resultado = 'Empate'
+        print('Empate')
     elif(jugadaUsuario == 'Piedra' and jugadaIA == 'Tijera') or \
         (jugadaUsuario == 'Papel'  and jugadaIA == 'Piedra') or \
         (jugadaUsuario == 'Tijera' and jugadaIA == 'Papel'):
-        resultado = 'Ganaste'
+        print('Ganaste')
         victoriasUsuario += 1
     else:
-        resultado = 'Perdiste'
+        print('Perdiste')
         victoriasIA += 1
 
     # Mostrar Resultado
-    resultado = f'Resultado: {resultado} ({victoriasUsuario} - {victoriasIA})'
+    print (f'{yellow}Resultado:{reset} {blue}{victoriasUsuario}{reset} - {red}{victoriasIA}{reset}')
     print(resultado)
