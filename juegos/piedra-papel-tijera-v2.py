@@ -13,7 +13,7 @@ modoDeJuego = ''
 flagSeguirJugando = True
 
 # FUNCIÓN - Elegir Modo de Juego
-def elegirModo():
+def elegir_modo():
 
     # Variables
     global modoDeJuego
@@ -195,7 +195,7 @@ def jugador_jugador():
 # EJECUCIÓN PRINCIPAL
 while flagSeguirJugando:
 
-    elegirModo()
+    elegir_modo()
     if modoDeJuego == 'jugadorvspc':
         jugador_pc()
     elif modoDeJuego == 'jugadorvsjugador':
