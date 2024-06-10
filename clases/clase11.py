@@ -133,7 +133,7 @@ print('contar palabras:', contar_palabras('Hola, como va?'))
 '''
 
 # función de convertir moneda: dolar, euro, peso (moneda actual, cantidad, moneda a convertir)
-'''
+
 dolar = 1   # 1 dolar --> $880 ARS.
 euro = 0.92 # 0.92 euros --> $880 ARS.
 peso = 880  # $880 ARS --> 1 dolar y a 0.92 euros.
@@ -173,7 +173,5 @@ def convertir_moneda(monedaActual, cantidad, monedaAConvertir):
     return round(conversion, 5)
 
 print('cambiar moneda:', convertir_moneda('euro', 1, 'peso'))
-'''
 
-# aplicación de predicción, similar al de "el gato y la caja"
-# https://elgatoylacaja.com/elnudo/el-juego-de-la-prediccion?utm_source=sitioEGLC&utm_medium=gato-hoy
+# Pensar en la aplicación de predicción, similar al de "el gato y la caja".
