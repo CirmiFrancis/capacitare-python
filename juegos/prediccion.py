@@ -1,13 +1,6 @@
 # Aplicación de predicción, similar al de "el gato y la caja".
 # https://elgatoylacaja.com/elnudo/el-juego-de-la-prediccion?utm_source=sitioEGLC&utm_medium=gato-hoy
 
-# Explicación sencilla de como funciona la IA:
-# Las primeras 4 jugadas son aleatorias. Luego, se tienen en cuenta las últimas 4 jugadas del usuario y el historial de jugadas, dividido en sub-arrays de 4 elementos. Es decir, la IA va a realizar una jugada dependiendo de tus últimas 4 jugadas, pero cada 4ta jugada, cuando previamente se completó un sub-array, la IA realiza una jugada basándose en la jugada más común del usuario en cada sub-array. 
-
-# Ejemplo historial:        [ 'i','d','d','i','i','i','d','d','d','i' ]     (10)
-# Ejemplo subhistorial:     [ ['i','d','d','i'], ['i','i','d','d'] ]        (2x4)
-# Ejemplo reciente:         [ 'd','d','d','i' ]                             (4)
-
 # Imports
 import random
 
