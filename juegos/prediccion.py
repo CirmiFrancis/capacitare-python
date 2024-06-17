@@ -57,21 +57,21 @@ def jugada_usuario():
 
 # Jugada IA
 def jugada_ia():
-    global historialJugadas, subHistorialJugadas, historialRecienteJugadas
+    global subHistorialJugadas, historialRecienteJugadas
     contadorI = 0
     contadorD = 0
 
     if len(historialJugadas) <= 4: # Las primeras 4 jugadas, se juegan aleatoriamente
         jugadaIA = jugadasPosibles[random.randrange(2)] # alternativa: random.choice(jugadasPosibles)
         if len(historialJugadas) % 4 == 0: # En la 4ta jugada, se guarda el primer sub-array y el historial de jugadas reciente
-            subHistorialJugadas.append(historialJugadas[:4]) 
+            # subHistorialJugadas.append(historialJugadas[:4]) 
             historialRecienteJugadas = historialJugadas[:4]
     else: 
         # En el resto de rondas, varía según el algoritmo que esté en el momento:
         # Si está el ALGORITMO QUE CREÉ, se tiene en cuenta las jugadas recientes y cada 4 jugadas prioriza la jugada que más realizó el usuario en cada sub-array. En caso de haber un empate, se elige aleatoriamente.
         # Si está el ALGORITMO DEL GATO Y LA CAJA, se tiene en cuenta las jugadas recientes y si encuentra ese patrón en el historial de jugadas, se imprime la jugada siguiente realizada por el usuario con mayor frecuencia. En caso de haber un empate, se elige aleatoriamente.
-        # Para usar mi algoritmo, COMENTAR desde la línea 76 hasta la 89 y DESCOMENTAR desde la 91 hasta la 93
-        # Para usar el otro algoritmo, COMENTAR desde la 91 hasta la 93 y DESCOMENTAR desde la 76 hasta la 89
+        # Para usar mi algoritmo, COMENTAR líneas 67, 76 - 89 y DESCOMENTAR 91 - 93
+        # Para usar el otro algoritmo, COMENTAR líneas 91 - 93 y DESCOMENTAR 67, 76 - 89
         historialRecienteJugadas = historialJugadas[-4:] # alternativa: historialJugadas[ (len(historialJugadas) - 4):]
         jugadaIA = jugadasPosibles[random.randrange(2)]
 
