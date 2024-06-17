@@ -1,65 +1,4 @@
-# Clase 11 - Generar Ejecutable & Funciones
-
-# ======================== GENERAR EJECUTABLE ========================
-
-# "PyInstaller" permite convertir scripts en ejecutables.
-
-# Para instalar "PyInstaller" y verificar la versión, escribo los siguientes comandos:
-# pip3 install pyinstaller
-# pip3 --version
-
-# En la terminal, escribo "ls" y "cd nombredeldirectorio" para ir hacia la dirección donde está el archivo a compilar.
-
-# Para generar el ejecutable de un script, escribo el siguiente comando:
-# pyinstaller --onefile nombredelarchivo.py
-
-# ======================== FUNCIONES ========================
-
-'''
-nombre = input('Ingrese su nombre: ')
-
-def saludar(nombre):
-    print('Hola', nombre)
-
-saludar(nombre)
-'''
-
-# len()
-'''
-cadena = input('Ingresa una cadena de caracteres: ')
-
-def mi_len(parametro):
-    cont = 0
-    for i in parametro:
-        cont += 1
-    return cont
-
-print('len():', mi_len(cadena))
-'''
-
-# isnumeric()
-'''
-cadena = input('Ingresa una cadena de caracteres: ')
-
-def mi_isnumeric(parametro):
-    nros = ['0','1','2','3','4','5','6','7','8','9','.']
-    lon = 0
-
-    for i in parametro:
-        if i not in nros:
-            return False
-        else:
-            lon += 1
-    
-    if lon == len(parametro):
-        return True
-    else:
-        return False
-
-print('isnumeric():', mi_isnumeric(cadena))
-'''
-
-# ====== ESTE CÓDIGO PERTENECE A LA CLASE 12 PERO LA HICE EN LA CLASE 11, ASÍ QUE VA A ESTAR REPETIDO ======
+# Clase 12 - Repaso Funciones
 
 # replace()
 '''
@@ -114,7 +53,7 @@ def calcular_porcentaje(valor, porcentaje):
         return 'Porcentaje inválido, debe estar entre 1 y 100.'
         #raise ValueError('Porcentaje inválido, debe estar entre 1 y 100.')
 
-    calculo = (porcentaje * valor) / 100
+    calculo = (porcentaje * valor) / 100 # opcional: guardar el valor de la variable afuera para usarla después
     return calculo
 
 print('calcular porcentaje:', calcular_porcentaje(1000, 20))
@@ -135,7 +74,7 @@ print('contar palabras:', contar_palabras('Hola, como va?'))
 '''
 
 # función de convertir moneda: dolar, euro, peso (moneda actual, cantidad, moneda a convertir)
-
+'''
 dolar = 1   # 1 dolar --> $880 ARS.
 euro = 0.92 # 0.92 euros --> $880 ARS.
 peso = 880  # $880 ARS --> 1 dolar y a 0.92 euros.
@@ -175,5 +114,81 @@ def convertir_moneda(monedaActual, cantidad, monedaAConvertir):
     return round(conversion, 5)
 
 print('cambiar moneda:', convertir_moneda('euro', 1, 'peso'))
+'''
 
 # Pensar en la aplicación de predicción, similar al de "el gato y la caja".
+
+# Calculadora (+, -, /, *)
+# La función calcular(valor1, valor2, operacion) debe devolver un resultado
+'''
+def calcular(valor1,valor2,op):
+
+    listaOperadores = ['+','-','/','*']
+
+    # Validación 1: si valor1 y valor2 no son números, devolver error
+    if not isinstance(valor1, (int, float)) or not isinstance(valor2, (int, float)):
+        return 'Error. Por favor, ingresa números válidos.'
+    
+    # Validación 2: si op no es un operador, devolver error
+    if op not in listaOperadores:
+        return 'Error. Por favor, ingresa un operador válido.'
+
+    # Resolver cálcuclo y retornar
+    if op == '+':
+        return round(valor1 + valor2, 3)
+    elif op == '-':
+        return round(valor1 - valor2, 3)
+    elif op == '/':
+        if valor2 == 0:
+            return 'Error. Por favor, no dividir por cero.'
+        return round(valor1 / valor2, 3)
+    elif op == '*':
+        return round(valor1 * valor2, 3)
+
+print(f'Calculadora simple: {calcular(10,2,'*')}')
+'''
+
+# Para el siguiente ejercicio, tener en cuenta:
+# isupper(), islower(), isnumeric(), isdigit()
+
+# Login: validar usuario y contraseña. 
+# def validar_user(cadena), el usuario debe contener más de 6 caracteres y ningún número
+# def validar_pass(cadena), la contraseña debe contener 1 mayúscula, 1 minúscula, 1 número y más de 12 caracteres
+
+def validar_user(cadena):
+
+    if len(cadena) > 6:
+        for i in cadena:
+            if i.isnumeric():
+                return False
+        return True
+    else:
+        return False
+
+username = input ('Ingrese el nombre de usuario: ').strip()
+print(validar_user(username))
+
+def validar_pass(cadena):
+    hayMayus = False
+    hayMinus = False
+    hayNumero = False
+
+    if len(cadena) > 12:
+        for i in cadena:
+            if i.isnumeric():
+                hayNumero = True
+                #print('Hay un numero')
+            elif i.isupper():
+                hayMayus = True
+                #print('Hay un upper')
+            elif i.islower():
+                hayMinus = True
+                #print('Hay un lower')
+        if hayMayus and hayMinus and hayNumero:
+            return True
+        return False
+    else:
+        return False
+
+password = input ('Ingrese la contraseña: ').strip()
+print(validar_pass(password))
