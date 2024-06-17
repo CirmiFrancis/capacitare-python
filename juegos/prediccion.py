@@ -70,8 +70,8 @@ def jugada_ia():
         # En el resto de rondas, varía según el algoritmo que esté en el momento:
         # Si está el ALGORITMO QUE CREÉ, se tiene en cuenta las jugadas recientes y cada 4 jugadas prioriza la jugada que más realizó el usuario en cada sub-array. En caso de haber un empate, se elige aleatoriamente.
         # Si está el ALGORITMO DEL GATO Y LA CAJA, se tiene en cuenta las jugadas recientes y si encuentra ese patrón en el historial de jugadas, se imprime la jugada siguiente realizada por el usuario con mayor frecuencia. En caso de haber un empate, se elige aleatoriamente.
-        # Para usar mi algoritmo, COMENTAR líneas 67, 76 - 89 y DESCOMENTAR 91 - 93
-        # Para usar el otro algoritmo, COMENTAR líneas 91 - 93 y DESCOMENTAR 67, 76 - 89
+        # Para usar mi algoritmo, COMENTAR líneas 76 - 89 y DESCOMENTAR 67, 91 - 93
+        # Para usar el otro algoritmo, COMENTAR líneas 67, 91 - 93 y DESCOMENTAR 76 - 89
         historialRecienteJugadas = historialJugadas[-4:] # alternativa: historialJugadas[ (len(historialJugadas) - 4):]
         jugadaIA = jugadasPosibles[random.randrange(2)]
 
