@@ -29,8 +29,7 @@ puntosUsuario = 0 # rondas ganadas por usuario
 puntosIA = 0 # rondas ganadas por IA
 
 # Reglas
-def dar_reglas():
-# Funcion que se utiliza únicamente al inicio de la partida. Imprime las reglas del juego.
+def dar_reglas(): # Se utiliza únicamente al inicio de la partida. Imprime las reglas del juego.
     print('=============================================================')
     print(f'{yellow}1) Evita que la IA anticipe tu jugada{reset}')
     print(f'{yellow}2) Tienes dos opciones: I (izquierda) o D (derecha){reset}')
@@ -39,94 +38,102 @@ def dar_reglas():
 
 # Jugada Usuario
 def jugada_usuario():
-# El usuario ingresa una jugada. Si esta jugada esta en jugadasPosibles, se guarda el valor en el historial y se retorna. De lo contrario, y si la jugada tampoco es /historial, /subhistorial, /reciente o !help, simplemente devuelve un mensaje y el jugador debe volver a ingresar una jugada.
-    jugadaUsuario = input(f'{blue}Tú: {reset}').strip().lower() # el usuario ingresa su jugada ('i' o 'd')
+    jugadaUsuario = input(f'{blue}Tú: {reset}').strip().lower() # El usuario ingresa su jugada ('i' o 'd')
 
-    while jugadaUsuario not in jugadasPosibles: # si la jugada no es ni 'i' o 'd', ...
+    while jugadaUsuario not in jugadasPosibles: # Si la jugada NO es ni 'i' o 'd', ...
         if jugadaUsuario == '/historial':
-            print(historialJugadas) # imprime todas las jugadas del usuario
+            print(historialJugadas) # Imprime todas las jugadas del usuario
             jugadaUsuario = input(f'{blue}Tú: {reset}').strip().lower()
         elif jugadaUsuario == '/subhistorial':
-            print(subHistorialJugadas) # imprime las jugadas del usuario, divididas en arrays de 4 elementos
+            print(subHistorialJugadas) # Imprime las jugadas del usuario, divididas en arrays de 4 elementos
             jugadaUsuario = input(f'{blue}Tú: {reset}').strip().lower()
         elif jugadaUsuario == '/reciente':
-            print(historialRecienteJugadas) # imprime las ultimas 4 jugadas del usuario
+            print(historialRecienteJugadas) # Imprime las ultimas 4 jugadas del usuario
             jugadaUsuario = input(f'{blue}Tú: {reset}').strip().lower()
-        elif jugadaUsuario == '!help': # imprime los distintos comandos
+        elif jugadaUsuario == '!help': # Imprime los distintos comandos
             print(f'{green}/historial{reset} para ver todas las jugadas que hiciste hasta el momento.')
             print(f'{green}/subhistorial{reset} para ver las jugadas que hiciste, divididas en arrays de 4 elementos.')
             print(f'{green}/reciente{reset} para ver las últimas 4 jugadas realizadas.')
             jugadaUsuario = input(f'{blue}Tú: {reset}').strip().lower()
         else:
-            print(f'{yellow}Jugada inválida. Por favor, escribe nuevamente.{reset}\n')
+            print(f'{yellow}Jugada inválida. Por favor, escribe nuevamente.{reset}\n') # Imprime 'jugada inválida'
             jugadaUsuario = input(f'{blue}Tú: {reset}').strip().lower()
 
-    historialJugadas.append(jugadaUsuario) # si la jugada es 'i' o 'd', se guarda en el historial
-    return jugadaUsuario # retorna el valor de la jugada del usuario
+    historialJugadas.append(jugadaUsuario) # Si la jugada es 'i' o 'd', se guarda en el historial
+    return jugadaUsuario # Retorna el valor de la jugada del usuario
 
 # Jugada IA
 def jugada_ia():
-# Las primeras 4 jugadas, la IA juega aleatoriamente, guardando en la 4ta jugada el primer subhistorial y el historial de jugadas reciente. Luego, siempre se tiene en cuenta las jugadas recientes y cada 4 jugadas prioriza la jugada que más realizó el usuario en cada sub-array.
-    global historialRecienteJugadas, subHistorialJugadas, historialRecienteJugadas
+    global historialJugadas, subHistorialJugadas, historialRecienteJugadas
+    contadorI = 0
+    contadorD = 0
 
-    if len(historialJugadas) <= 4:
-        jugadaIA = jugadasPosibles[random.randrange(2)] #random.choice(jugadasPosibles)
-        if len(historialJugadas) % 4 == 0:
+    if len(historialJugadas) <= 4: # Las primeras 4 jugadas, se juegan aleatoriamente
+        jugadaIA = jugadasPosibles[random.randrange(2)] # alternativa: random.choice(jugadasPosibles)
+        if len(historialJugadas) % 4 == 0: # En la 4ta jugada, se guarda el primer sub-array y el historial de jugadas reciente
             subHistorialJugadas.append(historialJugadas[:4]) 
             historialRecienteJugadas = historialJugadas[:4]
-    else:
-        historialRecienteJugadas = historialJugadas[-4:] # historialJugadas[ (len(historialJugadas) - 4):]
-        if len(historialJugadas) % 4 == 0:
-            subHistorialJugadas.append(historialRecienteJugadas)
-        jugadaIA = opcion_mas_elegida_por_usuario_en_cada_subarray()
+    else: 
+        # En el resto de rondas, varía según el algoritmo que esté en el momento:
+        # Si está el ALGORITMO QUE CREÉ, se tiene en cuenta las jugadas recientes y cada 4 jugadas prioriza la jugada que más realizó el usuario en cada sub-array. En caso de haber un empate, se elige aleatoriamente.
+        # Si está el ALGORITMO DEL GATO Y LA CAJA, se tiene en cuenta las jugadas recientes y si encuentra ese patrón en el historial de jugadas, se imprime la jugada siguiente realizada por el usuario con mayor frecuencia. En caso de haber un empate, se elige aleatoriamente.
+        # Para usar mi algoritmo, COMENTAR desde la línea 83 hasta la 97 y DESCOMENTAR desde la 99 hasta la 101
+        # Para usar el otro algoritmo, COMENTAR desde la 99 hasta la 101 y DESCOMENTAR desde la 83 hasta la 97
+        historialRecienteJugadas = historialJugadas[-4:] # alternativa: historialJugadas[ (len(historialJugadas) - 4):]
+        jugadaIA = jugadasPosibles[random.randrange(2)]
+
+        for i in range( len(historialJugadas) - len(historialRecienteJugadas) ):
+            if historialJugadas[i : i+len(historialRecienteJugadas)] == historialRecienteJugadas:
+                if historialJugadas[i+len(historialRecienteJugadas)] == 'i':
+                    contadorI += 1
+                else:
+                    contadorD += 1
+
+                # print(f'{historialJugadas}')
+                # print(f'Este patrón se encontró a partir del elemento {i}.')
+                # print(f'La siguiente jugada sería {historialJugadas[i+len(historialRecienteJugadas)]}. Hasta ahora, {contadorI} veces fue elegido IZQUIERDA y {contadorD} veces fue elegido DERECHA.')
+
+                jugadaIA = comparar_contadores(contadorI,contadorD)
+
+        # if len(historialJugadas) % 4 == 0:
+        #     subHistorialJugadas.append(historialRecienteJugadas)
+        # jugadaIA = opcion_mas_elegida_por_usuario_en_cada_subarray()
         
     print(f'{red}IA:{reset}', jugadaIA)
     return jugadaIA
 
-def opcion_mas_elegida_por_usuario_en_cada_subarray(): 
-# En esta funcion, si la cantidad de jugadas realizadas es divisible por 4 (es decir, cada 4 jugadas), se recorre el array subHistorialJugadas, el cual contiene como elementos sub-arrays, es decir, arrays dentro de un array. Dentro de cada sub-array, se compara si la jugada mas elegida por el usuario es igual a 'i', en ese caso se suma al contadorI, de lo contrario, se suma al contadorD. Luego, se compara contadorI y contadorD y dependiendo de quien es mayor, igual o menor, se realiza una jugada u otra. De lo contrario, se tiene en cuenta la opcion mas elegida en las jugadas recientes del usuario.
-# En resumen: cada 4 jugadas, se identifica, en cada una de las sub-arrays, cual fue la jugada mas elegida EN CADA sub-array, y dependiendo de eso, la IA elige una u otra jugada. De lo contrario, se tiene en cuenta la opcion mas elegida en las jugadas recientes del usuario.
+def opcion_mas_elegida_por_usuario_en_cada_subarray(): # Esta función sirve para el algoritmo que cree yo. 
     contadorI = 0
     contadorD = 0
 
-    if len(historialJugadas) % 4 == 0:
+    if len(historialJugadas) % 4 == 0: # Cada 4 jugadas, se identifica, en cada una de las sub-arrays, cual fue la jugada mas elegida EN CADA sub-array, y dependiendo de eso, la IA elige una u otra jugada
         for i in subHistorialJugadas:
             if opcion_mas_elegida_por_usuario(i) == 'i':
                 contadorI += 1
             else:
                 contadorD += 1
-    
-        if contadorI > contadorD:
-            return 'i'
-        elif contadorI < contadorD:
-            return 'd'
-        elif contadorI == contadorD:
-            return jugadasPosibles[random.randrange(2)]
-    else:
+        jugadaIA = comparar_contadores(contadorI,contadorD)
+        return jugadaIA
+    else: # De lo contrario, se tiene en cuenta la opcion mas elegida en las jugadas recientes del usuario.
         jugadaIA = opcion_mas_elegida_por_usuario(historialRecienteJugadas)
         return jugadaIA
 
 def opcion_mas_elegida_por_usuario(array):
-# Esta funcion tiene como parametro un array, sobre el cual se cuentan y se guardan las jugadas 'i' y las jugadas 'd', para luego compararlas y retornar una jugada u otra, la cual será usada por la IA.
-    contadorI = array.count('i')
-    contadorD = array.count('d')
+    contadorI = array.count('i') # Se cuentan y se guardan las jugadas 'i'
+    contadorD = array.count('d') # Se cuentan y se guardan las jugadas 'd'
+    jugadaIA = comparar_contadores(contadorI,contadorD) # Se compara las jugadas y se guarda una jugada u otra, la cual será usada por la IA
+    return jugadaIA
 
-    # for i in array:
-    #     if i == 'i':
-    #         contadorI += 1
-    #     else:
-    #         contadorD += 1
-
-    if contadorI > contadorD:
+def comparar_contadores(i,d): # Compara ambos contadores y retorna la jugada de la IA según corresponda
+    if i > d:
         return 'i'
-    elif contadorI < contadorD:
+    elif i < d:
         return 'd'
-    else:
+    elif i == d:
         return jugadasPosibles[random.randrange(2)]
 
 # Comparar Jugadas
-def comparar_jugadas(jugadaUsuario, jugadaIA):
-# Si las jugadas son IGUALES, suma un punto la IA, sino, suma un punto el usuario.
+def comparar_jugadas(jugadaUsuario, jugadaIA): # Si las jugadas son IGUALES, suma un punto la IA, sino, suma un punto el usuario
     global puntosUsuario, puntosIA
 
     if jugadaUsuario != jugadaIA:
@@ -135,8 +142,7 @@ def comparar_jugadas(jugadaUsuario, jugadaIA):
         puntosIA += 1
 
 # Dar Resultado
-def dar_resultado():
-# Funcion que se utiliza únicamente al final de la partida, cuando ya hay un ganador. Imprime el resultado con el ganador.
+def dar_resultado(): # Se utiliza únicamente al final de la partida. Imprime el resultado con el ganador/perdedor.
     print('=============================================================')
     print(f'{yellow}- RESULTADO -{reset}\n')
     print(f'{blue}Tú ({puntosUsuario}){reset} - {red}IA ({puntosIA}){reset}')
@@ -147,22 +153,17 @@ def dar_resultado():
         print(f'\n{yellow}Perdiste.{reset}')
 
 # Programa Principal
-# Imprimimos las reglas, comenzamos un ciclo donde el usuario y la IA van a jugar, y al finalizar se imprime el resultado.
-dar_reglas()
-
-while puntosUsuario < puntosMaximo and puntosIA < puntosMaximo:
+dar_reglas() # Imprimimos las reglas
+while puntosUsuario < puntosMaximo and puntosIA < puntosMaximo: # Comenzamos un ciclo donde el usuario y la IA van a jugar
     print('=============================================================')
     print(f'{yellow}- RONDA {contadorRondas} -{reset} (Escribe {green}!help{reset} para ver todos los comandos.)\n')
-
     # print(f'{yellow}historialJugadas: {historialJugadas}{reset}\n')
     # print(f'{yellow}subHistorialJugadas: {subHistorialJugadas}{reset}\n')
     # print(f'{yellow}historialRecienteJugadas: {historialRecienteJugadas}{reset}\n')
-
     print(f'{blue}Tú ({puntosUsuario}){reset} - {red}IA ({puntosIA}){reset}\n')
     jugadaUsuario = jugada_usuario()
     jugadaIA = jugada_ia()
     comparar_jugadas(jugadaUsuario, jugadaIA)
     contadorRondas += 1
-
-dar_resultado()
+dar_resultado() # Al finalizar se imprime el resultado
 print('=============================================================')
