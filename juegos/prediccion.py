@@ -40,15 +40,15 @@ def jugada_usuario():
         if jugadaUsuario == '/historial':
             print(historialJugadas) # Imprime todas las jugadas del usuario
             jugadaUsuario = input(f'{blue}Tú: {reset}').strip().lower()
-        elif jugadaUsuario == '/subhistorial':
-            print(subHistorialJugadas) # Imprime las jugadas del usuario, divididas en arrays de 4 elementos
-            jugadaUsuario = input(f'{blue}Tú: {reset}').strip().lower()
+        # elif jugadaUsuario == '/subhistorial':
+        #     print(subHistorialJugadas) # Imprime las jugadas del usuario, divididas en arrays de 4 elementos
+        #     jugadaUsuario = input(f'{blue}Tú: {reset}').strip().lower()
         elif jugadaUsuario == '/reciente':
             print(historialRecienteJugadas) # Imprime las ultimas 4 jugadas del usuario
             jugadaUsuario = input(f'{blue}Tú: {reset}').strip().lower()
         elif jugadaUsuario == '!help': # Imprime los distintos comandos
             print(f'{green}/historial{reset} para ver todas las jugadas que hiciste hasta el momento.')
-            print(f'{green}/subhistorial{reset} para ver las jugadas que hiciste, divididas en arrays de 4 elementos.')
+            #print(f'{green}/subhistorial{reset} para ver las jugadas que hiciste, divididas en arrays de 4 elementos.')
             print(f'{green}/reciente{reset} para ver las últimas 4 jugadas realizadas.')
             jugadaUsuario = input(f'{blue}Tú: {reset}').strip().lower()
         else:
@@ -161,6 +161,7 @@ while puntosUsuario < puntosMaximo and puntosIA < puntosMaximo: # Comenzamos un 
     jugadaIA = jugada_ia()
     comparar_jugadas(jugadaUsuario, jugadaIA)
     historialJugadas.append(ultimaJugadaUsuario) # Ahora sí, se agrega la jugada del usuario a historialJugadas
+    historialRecienteJugadas = historialJugadas[-4:] # También se actualiza el historial de jugadas recientes
     contadorRondas += 1
 dar_resultado() # Al finalizar se imprime el resultado
 print('=============================================================')
