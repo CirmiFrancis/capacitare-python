@@ -16,6 +16,7 @@ jugadasPosibles = ['i', 'd'] # jugadas posibles, i = izquierda o d = derecha
 historialJugadas = [] # historial total de jugadas
 subHistorialJugadas = [] # historial parcial de jugadas, divididas en sub-arrays de 4 elementos
 historialRecienteJugadas = [] # ultimas 4 jugadas
+ultimaJugadaUsuario = '' # se guarda la ultima jugada para agregarla posteriormente a historialJugadas
 contadorRondas = 1 # ronda actual
 puntosMaximo = 50 # cantidad de rondas
 puntosUsuario = 0 # rondas ganadas por usuario
@@ -31,6 +32,8 @@ def dar_reglas(): # Se utiliza únicamente al inicio de la partida. Imprime las 
 
 # Jugada Usuario
 def jugada_usuario():
+    global ultimaJugadaUsuario
+
     jugadaUsuario = input(f'{blue}Tú: {reset}').strip().lower() # El usuario ingresa su jugada ('i' o 'd')
 
     while jugadaUsuario not in jugadasPosibles: # Si la jugada NO es ni 'i' o 'd', ...
@@ -52,7 +55,7 @@ def jugada_usuario():
             print(f'{yellow}Jugada inválida. Por favor, escribe nuevamente.{reset}\n') # Imprime 'jugada inválida'
             jugadaUsuario = input(f'{blue}Tú: {reset}').strip().lower()
 
-    historialJugadas.append(jugadaUsuario) # Si la jugada es 'i' o 'd', se guarda en el historial
+    ultimaJugadaUsuario = jugadaUsuario # Si la jugada es 'i' o 'd', se guarda en esta variable temporalmente. Esto debido a que no quiero que sea tenido en cuenta por la IA cuando realice su jugada, por lo tanto se agrega al historialJugadas una vez realizada la comparacion
     return jugadaUsuario # Retorna el valor de la jugada del usuario
 
 # Jugada IA
@@ -75,7 +78,7 @@ def jugada_ia():
         historialRecienteJugadas = historialJugadas[-4:] # alternativa: historialJugadas[ (len(historialJugadas) - 4):]
         jugadaIA = jugadasPosibles[random.randrange(2)]
 
-        for i in range( len(historialJugadas) - len(historialRecienteJugadas) ):
+        for i in range( len(historialJugadas) - len(historialRecienteJugadas) ): # no quiero que el historial reciente (últimas 4 jugadas) afecte a la jugada, por lo que lo descarto
             if historialJugadas[i : i+len(historialRecienteJugadas)] == historialRecienteJugadas:
                 if historialJugadas[i+len(historialRecienteJugadas)] == 'i':
                     contadorI += 1
@@ -157,6 +160,7 @@ while puntosUsuario < puntosMaximo and puntosIA < puntosMaximo: # Comenzamos un 
     jugadaUsuario = jugada_usuario()
     jugadaIA = jugada_ia()
     comparar_jugadas(jugadaUsuario, jugadaIA)
+    historialJugadas.append(ultimaJugadaUsuario) # Ahora sí, se agrega la jugada del usuario a historialJugadas
     contadorRondas += 1
 dar_resultado() # Al finalizar se imprime el resultado
 print('=============================================================')
