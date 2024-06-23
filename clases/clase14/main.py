@@ -1,10 +1,45 @@
-# TENER EN CUENTA:
-# 1) Ingresar nombre de usuario (solo string, sin numeros ni caracteres especiales)
-# 2) Dar lista de productos con sus datos
-# 3) Preguntar por lo que quiere comprar y la cantidad (producto, cantidad. El producto es string y la cantidad un entero)
-# 4) Imprimir ticket y preguntar si quiere seguir comprando (ciclo) o finalizar la compra
-# 5) Si finaliza la compra, imprimir la cantidad de plata generada, las ventas realizadas y la cantidad de tickets generados
+# Imports
+from func import *
+from productos import *
+from color import *
 
+# Main
 def main():
-    print("hola mundo")
+
+    # Variables
+    flag = True # Para el ciclo WHILE
+    cantidadTickets = 0 # Cantidad de Tickets Generados
+    carrito = [] # Conjunto de Tickets de la Compra
+    precioTotal = 0 # Precio Total de la Compra
+
+    print(f'\n{yellow}============================================================={reset}')
+    nombreUsuario = ingresar_usuario() # Ingresar Nombre de Usuario
+
+    while flag:
+        print(f'\n{yellow}============================================================={reset}')
+        imprimir_productos() # Imprimir Productos
+        print(f'\n{yellow}============================================================={reset}')
+        productoAComprar = ingresar_producto() # Elegir Producto
+        print(f'\n{yellow}============================================================={reset}')
+        cantidadProductoAComprar = ingresar_cantidad(productoAComprar) # Elegir Cantidad
+        print(f'\n{yellow}============================================================={reset}')
+
+        # Crear Ticket
+        ticket = crear_ticket(nombreUsuario, productoAComprar, cantidadProductoAComprar)
+        cantidadTickets += 1 # Aumento la Cantidad de Tickets
+        carrito.append(ticket) # Agrego un Ticket el Carrito
+        precioTotal += ticket['precioTicket'] # Aumento el Precio Total
+        print(f'\n{green}{ticket}{reset}') # Imprimo el Ticket
+
+        # Seguir Comprando
+        print(f'\n{yellow}============================================================={reset}')
+        respuesta = seguir_comprando()
+
+        if respuesta == 'NO':
+            flag = False # Salgo del Ciclo WHILE
+
+    print(f'\n{yellow}============================================================={reset}')
+    imprimir_carrito(cantidadTickets, carrito, precioTotal) # Imprimir Carrito
+    print(f'\n{yellow}============================================================={reset}\n')
+
 main()

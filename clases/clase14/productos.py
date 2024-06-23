@@ -1,10 +1,5 @@
-# Archivo productos.py
-    # ID
-    # Producto
-    # Precio
-    # Stock
-
-empleados = [
+# Lista de Diccionarios de los Productos
+productos = [
     {
         'id': 1,
         'nombre': 'Banana',
