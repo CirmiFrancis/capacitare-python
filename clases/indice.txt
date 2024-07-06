@@ -1,3 +1,5 @@
+Fueron 16 clases. Tenían que ser 17 para ver formateo de texto pero hubo un sábado feriado.
+
 # Clase 1 - Variables & Print
 # Clase 2 - Funciones para strings (upper(), lower(), capitalize(), strip(), etc)
 # Clase 3 - Repaso Funciones para strings & If-Elif-Else
@@ -12,3 +14,5 @@
 # Clase 12 - Repaso Funciones
 # Clase 13 - Importar Archivos & Repaso General
 # Clase 14 - Proyecto Integrador (E-Commerce)
+# Clase 15 - Proyecto Integrador (E-Commerce), Parte 2
+# Clase 16 - Proyecto Integrador (E-Commerce), Parte 3 + Presentaciones
