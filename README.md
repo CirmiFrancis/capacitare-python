@@ -5,4 +5,4 @@ Realicé varios proyectos pequeños mientras iba aprendiendo los conceptos bási
 
 Certificado de aprobación del Curso:
 
-![Imagen del Certificado](
+![Imagen del Certificado](https://github.com/CirmiFrancis/capacitare-python/blob/main/certificate.jpg?raw=true)
